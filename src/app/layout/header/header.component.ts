@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   moduleId: module.id,
@@ -9,9 +9,9 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class HeaderComponent implements OnInit {
 
   private authenticated: boolean;
-  private authenticationService: AuthenticationService;
+  private authenticationService: AuthService;
 
-  constructor(_authenticationService: AuthenticationService) {
+  constructor(_authenticationService: AuthService) {
     this.authenticationService = _authenticationService;
   }
 

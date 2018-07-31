@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {  UserService } from '../services/user.service';
-import { AlertService } from './../services/alert.service';
+import { AlertService } from '../../shared/services/alert.service';
 
 @Component({
     moduleId: module.id,

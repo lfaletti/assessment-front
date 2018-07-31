@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
-export class AuthenticationService {
+export class AuthService {
     private apiHost = 'http://localhost:50660';
     public loggedInSubject = new Subject<any>();
 

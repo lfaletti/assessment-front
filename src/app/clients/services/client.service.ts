@@ -13,9 +13,12 @@ export class ClientService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<Client[]>(this.apiUrl).
+        return this.http.get<ClientsResponse>(this.apiUrl).
             pipe (
-                map ((response: ClientsResponse) => response.clients)
+                map ((response: ClientsResponse) => response.clients),
+                catchError(err => {
+                    return _throw(err);
+                })
             );
     }
 
