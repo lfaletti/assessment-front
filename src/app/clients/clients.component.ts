@@ -1,21 +1,28 @@
-import { OnInit, Component } from '@angular/core';
-import { ClientService } from '../services/client.service';
-import { Client } from '../models/client';
+import { Component, OnInit } from '@angular/core';
+import { Client } from '../models/typings';
+import { ClientService } from './services/client.service';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'clients.component.html'
+    templateUrl: 'clients.component.html',
+    styleUrls: ['clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
 
      clients: Client[] = [];
+     selectedId: string;
 
     constructor (private clientService: ClientService) { }
     ngOnInit(): void {
-        this.getClients();
+        this.clientService.getAll().subscribe(c => {
+            this.clients = c;
+        });
     }
 
-    getClients() {
-        this.clientService.getAll().subscribe(c => this.clients = c);
+    isSelected(client: Client) {
+        return client.id === this.selectedId;
+    }
+
+    selectRow(id: string) {
+        this.selectedId = id;
     }
 }

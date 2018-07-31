@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PolicyService } from './../services/policy.service';
-import { Policy } from '../models/policy';
+import { Policy } from '../models/typings';
 
 @Component({
     selector: 'app-policies',
