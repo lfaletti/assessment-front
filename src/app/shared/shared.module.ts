@@ -1,9 +1,8 @@
-import { AuthGuard } from './auth.guard/auth.guard';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AlertComponent } from './alert/alert.component';
+import { AuthGuard } from './auth.guard/auth.guard';
 import { AlertService } from './services/alert.service';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [CommonModule],

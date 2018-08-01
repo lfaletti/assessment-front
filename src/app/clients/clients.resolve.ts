@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { _throw } from 'rxjs/observable/throw';
+import { catchError } from 'rxjs/operators';
 import { Client } from '../models/typings';
+import { AlertService } from '../shared/services/alert.service';
 import { ClientService } from './services/client.service';
+import { map } from 'rxjs/operator/map';
 
 @Injectable()
 export class ClientsResolve implements Resolve<Observable<Client>> {
 
-    constructor(private clientService: ClientService) {}
+    constructor(private alertService: AlertService, private clientService: ClientService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        // if (route.params['id']) {
-        //     return this.clientService.getClientById(route.params['id']);
-        // }
-        return this.clientService.getAll();
+        return this.clientService.getAll().pipe (
+            catchError (err => {
+                this.alertService.error('An error has occurred. Please, try again later.');
+                return _throw(err);
+            }));
     }
 }
