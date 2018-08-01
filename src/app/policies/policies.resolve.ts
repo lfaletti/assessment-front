@@ -12,6 +12,8 @@ export class PoliciesResolve implements Resolve<Observable<Policy>> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (route.params['clientId']) {
             return this.policyService.getByCientId(route.params['clientId']);
+        } else {
+            return this.policyService.getAll();
         }
     }
 }

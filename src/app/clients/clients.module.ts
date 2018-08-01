@@ -7,9 +7,10 @@ import { ClientsComponent } from './clients.component';
 import { ClientsResolve } from './clients.resolve';
 import { ClientsRoutingModule } from './clients.routing.module';
 import { ClientService } from './services/client.service';
+import { PoliciesModule } from '../policies/policies.module';
 
 @NgModule({
-    imports: [CommonModule, ClientsRoutingModule, HttpClientModule, FormsModule],
+    imports: [CommonModule, ClientsRoutingModule, PoliciesModule, HttpClientModule, FormsModule],
     exports: [],
     declarations: [ClientsComponent],
     providers: [    ClientService,

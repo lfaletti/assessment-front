@@ -6,7 +6,7 @@ import { PoliciesComponent } from './policies.component';
 const routes: Routes = [
   { path: '',
   children: [{
-      path: 'client/:clientId', component: PoliciesComponent, resolve: { policies: PoliciesResolve }
+      path: '', component: PoliciesComponent, resolve: { policies: PoliciesResolve }
   }]
 }];
 
