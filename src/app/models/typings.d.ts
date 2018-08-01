@@ -7,7 +7,7 @@ export interface Client {
 
 export interface Policy {
     id: string;
-    amountinsured: number;
+    amountInsured: number;
     email: string;
     inceptiondate: Date;
     installmentpayment: boolean;

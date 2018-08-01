@@ -7,7 +7,7 @@ const routes: Routes = [
     {
         path: '',
         children: [{
-            path: '', component: ClientsComponent, resolve: { escuelas: ClientsResolve }
+            path: '', component: ClientsComponent, resolve: { clients: ClientsResolve }
         }]
     }
 ];

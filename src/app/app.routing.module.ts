@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
     { path: 'clients', loadChildren: './clients/clients.module#ClientsModule'},
+    { path: 'policies', loadChildren: './policies/policies.module#PoliciesModule'},
     { path: 'auth', loadChildren: './auth/auth.module#AuthModule'},
 
     // otherwise redirect to home

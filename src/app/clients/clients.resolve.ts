@@ -10,8 +10,9 @@ export class ClientsResolve implements Resolve<Observable<Client>> {
     constructor(private clientService: ClientService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (route.params['id']) {
-            return this.clientService.getClientById(route.params['id']);
-        }
+        // if (route.params['id']) {
+        //     return this.clientService.getClientById(route.params['id']);
+        // }
+        return this.clientService.getAll();
     }
 }
