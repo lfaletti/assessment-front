@@ -1,0 +1,12 @@
+.footer-content {
+
+    height: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+    h6 {
+        font-size: 8px;
+        margin-top: 3px;
+    }

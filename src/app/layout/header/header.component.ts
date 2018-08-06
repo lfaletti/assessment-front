@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-layout-header',
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
 
-  private authenticated: boolean;
-  private authenticationService: AuthService;
+  isLoggedIn: Observable<boolean>;
 
-  constructor(_authenticationService: AuthService) {
-    this.authenticationService = _authenticationService;
-  }
+  constructor(private _authenticationService: AuthService, private _router: Router) {
+    this.isLoggedIn = _authenticationService.isLoggedIn();
+   }
 
-  ngOnInit() {
-        this.authenticationService.loggedInSubject.subscribe(value => this.authenticated = value);
-  }
+  ngOnInit() { }
+
+
 
   logout() {
-    this.authenticationService.logout();
+    this._authenticationService.logout();
+    this._router.navigate(['auth']);
   }
 }
 

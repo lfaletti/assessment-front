@@ -4,21 +4,21 @@
 
     <ul class="nav navbar-nav pull-xs-right">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/">
+        <a class="nav-link" routerLink="/home">
           home
         </a>
       </li>
-      <li class="nav-item" *ngIf="!authenticated">
-        <a class="nav-link" routerLink="/login">
+      <li class="nav-item" *ngIf="!(isLoggedIn | async)">
+        <a class="nav-link" routerLink="/auth">
           login
         </a>
       </li>
-      <li class="nav-item" *ngIf="!authenticated">
+      <li class="nav-item" *ngIf="!(isLoggedIn | async)">
         <a class="nav-link" routerLink="/register">
           register
         </a>
       </li>
-      <li class="nav-item" *ngIf="authenticated">
+      <li class="nav-item" *ngIf="(isLoggedIn | async)">
         <a class="nav-link" (click)="logout()">
           logout
         </a>

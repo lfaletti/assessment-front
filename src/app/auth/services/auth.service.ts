@@ -1,15 +1,22 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
-    private apiHost = 'http://localhost:50660';
-    public loggedInSubject = new Subject<any>();
+    private apiHost = environment.API_AUTHENTICATION_URL;
 
-    constructor (private http: HttpClient) { }
+    loggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
+
+    constructor(private http: HttpClient) { }
+
+    getLoggedInSubject(): Observable<boolean> {
+        return this.loggedInSubject.asObservable();
+    }
 
     login(username: string, password: string) {
         const body = `username=${username}&password=${password}&grant_type=password`;
@@ -25,21 +32,17 @@ export class AuthService {
             });
     }
 
-    logout () {
+    logout() {
         // remove the user from local storage
         localStorage.removeItem('currentUser');
         this.loggedInSubject.next(false);
     }
 
-    isLoggedIn() {
-        return this.http.get<HttpResponse<any>>(this.apiHost + '/api/auth/ping')
-        .map(response => {
-            if (response) {
-                this.loggedInSubject.next(true);
-                return true;
-            }
-            this.loggedInSubject.next(false);
-            return false;
-        });
+    private hasToken(): boolean {
+        return !!localStorage.getItem('currentUser');
+    }
+
+    isLoggedIn(): Observable<boolean> {
+        return this.loggedInSubject.asObservable();
     }
 }
