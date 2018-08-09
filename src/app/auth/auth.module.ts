@@ -12,6 +12,6 @@ import { UsersComponent } from './users/users.component';
     imports: [CommonModule, FormsModule, AuthRoutingModule],
     exports: [],
     declarations: [LoginComponent, UsersComponent, RegisterComponent],
-    providers: [UserService, AlertService],
+    providers: [UserService],
 })
 export class AuthModule { }

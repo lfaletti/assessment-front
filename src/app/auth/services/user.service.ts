@@ -6,7 +6,7 @@ import { User } from '../../models/user';
 @Injectable()
 export class UserService {
 
-    private apiHost = environment.HOST_URL;
+    private apiHost = environment.API_AUTHENTICATION_URL;
 
     constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class UserService {
 
     create(user: User) {
         return this.http.post(
-            this.apiHost + 'api/auth/register', user);
+            this.apiHost + '/api/auth/register', user);
     }
 
     update(user: User) {

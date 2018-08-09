@@ -26,10 +26,10 @@ export class RegisterComponent {
                 data => {
                     // set success message and pass true paramater to persist the message after redirecting to the login page
                     this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/auth']);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error('An error has occurred when trying to register your account. Please, try again later.');
                     this.loading = false;
                 });
     }
