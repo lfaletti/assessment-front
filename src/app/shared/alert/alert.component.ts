@@ -20,6 +20,8 @@ export class AlertComponent implements OnInit {
             if (notification) {
             this.message = notification.text;
             this.messageType = notification.type;
+            } else {
+                this.message = '';
             }
         } );
     }

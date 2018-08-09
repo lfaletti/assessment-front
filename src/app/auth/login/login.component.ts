@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../shared/services/alert.service';
@@ -37,8 +38,14 @@ export class LoginComponent implements OnInit {
                 data => {
                     this.router.navigate([this.returnUrl]);
                 },
-                error => {
-                    this.alertService.error('An error has occurred.');
+                errorResponse => {
+                    if (errorResponse instanceof HttpErrorResponse) {
+                        if (errorResponse.error.error === 'invalid_grant') {
+                            this.alertService.error('The username or password is incorrect.');
+                        }
+                    } else {
+                        this.alertService.error('An error has occurred.');
+                    }
                     this.loading = false;
                 });
     }

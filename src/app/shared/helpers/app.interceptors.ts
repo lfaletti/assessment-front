@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { _throw } from 'rxjs/observable/throw';
 import { catchError, tap } from 'rxjs/operators';
+import { AlertService } from '../services/alert.service';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
 
-    constructor(private _router: Router) { }
+    constructor(private _alertService: AlertService, private _router: Router) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
@@ -27,7 +28,8 @@ export class AppInterceptor implements HttpInterceptor {
                 (err: any) => {
                     if (err instanceof HttpErrorResponse) {
                         if (err.status === 401) {
-                            this._router.navigate(['auth']);
+                            this._alertService.error('You are unauthorized to access this section of the application.', true)
+                            this._router.navigate(['home']);
                         }
                     }
                     console.log(event);
