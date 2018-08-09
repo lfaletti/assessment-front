@@ -13,11 +13,3 @@ export interface Policy {
     installmentpayment: boolean;
     clientid: string;
 }
-
-export interface ClientsResponse {
-    clients: Client[];
-}
-
-export interface PoliciesResponse {
-    policies: Policy[];
-}

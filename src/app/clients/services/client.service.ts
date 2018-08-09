@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { _throw } from 'rxjs/observable/throw';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Client, ClientsResponse } from '../../models/typings';
+import { Client } from '../../models/typings';
 
 @Injectable()
 export class ClientService {
@@ -13,9 +13,9 @@ export class ClientService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<ClientsResponse>(this.apiUrl).
+        return this.http.get<Client[]>(this.apiUrl).
             pipe (
-                map ((response: ClientsResponse) => response.clients),
+                map ((response: Client[]) => response),
                 catchError(err => {
                     return _throw(err);
                 })

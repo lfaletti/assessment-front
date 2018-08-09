@@ -3,11 +3,11 @@
             <th>Name</th>
             <th>Email</th>
         </thead>        
-        <tbody *ngIf="clients && clients.length !== 0">
+        <tbody *ngIf="clients">
             <tr *ngFor="let c of clients" (click)="selectRow(c.id)" [ngClass] = "{'table-primary': isSelected(c)}">
                 <td>{{ c.name }}</td>
                 <td>{{ c.email }}</td>
-                <td><a [routerLink]="['/clients/',c.id,'policies']">View Policies</a></td>
+                <td><a [routerLink]="['/policies/',c.name]">View Policies</a></td>
             </tr>
         </tbody>        
     </table>

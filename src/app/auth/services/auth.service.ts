@@ -4,6 +4,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -20,8 +21,8 @@ export class AuthService {
 
     login(username: string, password: string) {
         const body = `username=${username}&password=${password}&grant_type=password`;
-        return this.http.post<any>(this.apiHost + '/oauth2/token', body)
-            .map(user => {
+        return this.http.post<any>(this.apiHost + '/oauth2/token', body).pipe(
+            map(user => {
                 // login successful if there's token
                 if (user && user.access_token) {
                     // store user details and jwt token in local storage and keep user logged in
@@ -29,7 +30,8 @@ export class AuthService {
                     this.loggedInSubject.next(true);
                 }
                 return user;
-            });
+            })
+        );
     }
 
     logout() {

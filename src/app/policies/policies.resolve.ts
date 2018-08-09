@@ -10,8 +10,8 @@ export class PoliciesResolve implements Resolve<Observable<Policy>> {
     constructor(private policyService: PolicyService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (route.params['clientId']) {
-            return this.policyService.getByCientId(route.params['clientId']);
+        if (route.params['username']) {
+            return this.policyService.getByUsername(route.params['username']);
         } else {
             return this.policyService.getAll();
         }

@@ -6,10 +6,15 @@
   
   .login-full-width {
     width: 100%;
+
   }
 
   .center {
     margin: auto;
     width: 50%;
     padding: 10px;
+}
+
+.login-text {
+  padding-top: 20px;
 }
