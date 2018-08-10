@@ -42,9 +42,12 @@ export class LoginComponent implements OnInit {
                     if (errorResponse instanceof HttpErrorResponse) {
                         if (errorResponse.error.error === 'invalid_grant') {
                             this.alertService.error('The username or password is incorrect.');
+                        } else {
+                            this.alertService.error('An unexpected error has occurred.');
                         }
+                    } else {
+                        this.alertService.error('An unexpected error has occurred.');
                     }
-                    this.alertService.error('An error has occurred.');
                     this.loading = false;
                 });
     }
