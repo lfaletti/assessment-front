@@ -5,8 +5,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Application routes ## 
 
 /home
+
 /clients
+
 /policies
+
 /auth
 
 ## Functions ##
@@ -15,6 +18,11 @@ List all clients.
 List policies by client name.
 Register using a client user name.
 Login using a client user name.
+
+## First use ##
+
+Go to register with username set as one of the user name of the clients Api. A login will be created with its role.
+Registering with other username will set the role as "guest", thereby not having access to any functionality.
 
 ## Build dependencies ##
 
