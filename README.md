@@ -1,6 +1,21 @@
-# AppInsurance
+# Insurance Services - front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3
+
+## Application routes ## 
+
+/home
+/clients
+/policies
+/auth
+
+## Functions ##
+
+List all clients.
+List policies by client name.
+Register using a client user name.
+Login using a client user name.
+
 ## Build dependencies ##
 
 1 ) npm install
