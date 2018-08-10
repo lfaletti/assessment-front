@@ -28,7 +28,7 @@ export class AppInterceptor implements HttpInterceptor {
                 (err: any) => {
                     if (err instanceof HttpErrorResponse) {
                         if (err.status === 401) {
-                            this._alertService.error('You are unauthorized to access this section of the application.', true)
+                            this._alertService.error('You are unauthorized to access this section of the application.', true);
                             this._router.navigate(['home']);
                         }
                     }

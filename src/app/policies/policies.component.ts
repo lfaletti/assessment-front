@@ -4,7 +4,8 @@ import { PolicyService } from './services/policy.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    templateUrl: 'policies.component.html'
+    templateUrl: 'policies.component.html',
+    styleUrls: ['policies.component.css']
 })
 
 export class PoliciesComponent implements OnInit {

@@ -6,12 +6,11 @@ import { AuthRoutingModule } from './auth.routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './services/user.service';
-import { UsersComponent } from './users/users.component';
 
 @NgModule({
     imports: [CommonModule, FormsModule, AuthRoutingModule],
     exports: [],
-    declarations: [LoginComponent, UsersComponent, RegisterComponent],
+    declarations: [LoginComponent, RegisterComponent],
     providers: [UserService],
 })
 export class AuthModule { }
