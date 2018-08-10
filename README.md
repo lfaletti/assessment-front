@@ -15,8 +15,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Functions ##
 
 List all clients.
+
 List policies by client name.
-Register using a client user name.
+
+Register using a client user name (first step!).
+
 Login using a client user name.
 
 ## First use ##
